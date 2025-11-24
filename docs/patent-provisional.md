@@ -74,7 +74,7 @@ A unified **Data Substrate** suitable for search and reasoning.
 
 **FIGURE 1 – Data Layer Overview
 
-![Figure 1](../diagrams/Figure 1  — Three Layer SDLC Overview.png)**
+![Figure 1 — Three Layer SDLC Overview](../diagrams/Figure%201%20%20—%20Three%20Layer%20SDLC%20Overview.png)
 
 ---
 
@@ -106,7 +106,7 @@ A structured **Insight Object** containing:
 
 **FIGURE 2 – Insight Layer Pipeline
 
-![Figure 2](../diagrams/Figure 2 — Data Flow Across Layers.png)**
+![Figure 2 — Data Flow Across Layers](../diagrams/Figure%202%20—%20Data%20Flow%20Across%20Layers.png)
 
 ---
 
@@ -138,7 +138,7 @@ A final **User Interaction Artifact**:
 
 **FIGURE 3 – Conversation Layer Flow
 
-![Figure 3](../diagrams/Figure 3 — Insight Engine Pipeline.png)**
+![Figure 3 — Insight Engine Pipeline](../diagrams/Figure%203%20—%20Insight%20Engine%20Pipeline.png)
 
 ---
 
@@ -186,17 +186,16 @@ The system of Claim 1 implemented as a standardized SDLC applicable across enter
 
 ### **FIGURE 4 – Orchestration & Tool Routing
 
-![Figure 4](../diagrams/Figure 4 — Orchestration  Tool Routing.png)**
-*Placeholder: Insert diagram link*
+![Figure 4 — Orchestration  Tool Routing](../diagrams/Figure%204%20—%20Orchestration%20%20Tool%20Routing.png)
 
 ### **FIGURE 5 – Conversation Feedback Loop
 
-![Figure 5](../diagrams/Figure 5 — Conversation Feedback Loop.png)**
+![Figure 5 — Conversation Feedback Loop](../diagrams/Figure%205%20—%20Conversation%20Feedback%20Loop.png)
 *Placeholder: Insert diagram link*
 
 ### **FIGURE 6 – System Boundary Diagram
 
-![Figure 6](../diagrams/Figure 6 — System Boundary Diagram.png)**
+![Figure 6 — System Boundary Diagram](../diagrams/Figure%206%20—%20System%20Boundary%20Diagram.png)
 *Placeholder: Insert diagram link*
 
 ---
