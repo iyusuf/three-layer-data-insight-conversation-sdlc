@@ -1,182 +1,231 @@
+# Three-Layer Intelligence Stack
 
-**Three-Layer Intelligence Stack**
-=====================================
+### A Practical SDLC Mental Model for Building Applied AI Systems
 
-### **A Practical SDLC Mental Model for Building Applied AI Systems**
-
-Created by: **Iqbal Yusuf (CAIO, KS Engineers PC)**  
+Created by: **Iqbal Yusuf (CAIO, KS Engineers PC)**
 Version: **1.0**
 
-* * *
+---
 
-**Overview**
----------------
+## Overview
 
-Modern AI systems often fail because teams think in terms of _models_ (LLMs, prompts, fine-tuning).  
-But real enterprise AI requires a broader, structured SDLC that aligns data, reasoning, and user experience.
+Modern AI systems often fail because teams think in terms of *models* (LLMs, prompts, fine-tuning). But real enterprise AI requires a broader, structured SDLC that aligns data, reasoning, and user experience.
 
 This repository presents a clean, practical mental model:
 
-**DATA → INSIGHT → CONVERSATION**
-====================================
+# **DATA → INSIGHT → CONVERSATION**
 
 A three-layer SDLC for designing, building, and delivering production-grade AI systems.
+Used across real enterprise projects: CSSWEB Downloader, Resume Sorter AI, RFX Analyzer, Unanet P&L Insights, etc.
 
-This is the same model used across real enterprise projects:  
-CSSWEB Downloader, Resume Sorter AI, RFX Analyzer, Unanet P&L Insights, etc.
+---
 
-* * *
+## 📊 Diagrams (Mermaid)
 
-**Layer 1 — DATA**
----------------------
+Below are six official diagrams illustrating the architecture.
 
-### _“What raw material do we have?”_
+### **Figure 1 — Three-Layer SDLC Overview**
 
-This is the foundation of the entire system — the _substrate_ where all intelligence begins.
+```mermaid
+flowchart TB
+    subgraph Three_Layer_SDLC ["Three-Layer SDLC"]
+        Conversation["Conversation Layer"]
+        Insight["Insight Layer"]
+        Data["Data Layer"]
+    end
 
-**Responsibilities**
+    Conversation --> Insight
+    Insight --> Data
+```
 
-*   Raw documents (PDF, CSV, email, drawings, resumes)
-*   SQL/NoSQL datasets
-*   Normalization, cleaning, canonical formats
-*   ETL / ELT pipelines
-*   Embeddings, vector stores (Chroma, PGVector, Pinecone)
-*   Metadata + tagging
-*   Data access controls
-*   Grounding datasets (what the LLM is allowed to use)
+### **Figure 2 — Data Flow Across Layers**
 
-**Outputs**
+```mermaid
+flowchart LR
+    User["User Query"]
+    InsightRetrieval["Insight Retrieval"]
+    DataSubstrate["Data Substrate"]
 
-*   Unified Data Substrate
-*   Reliable, versioned, queryable data
-*   Ready for retrieval and reasoning
+    User --> InsightRetrieval --> DataSubstrate
+```
 
-* * *
+### **Figure 3 — Insight Engine Pipeline**
 
-**Layer 2 — INSIGHT**
-------------------------
+```mermaid
+flowchart LR
+    Retrieval["Retrieval"]
+    Ranking["Ranking"]
+    ToolUse["Tool Use"]
+    Reasoning["Reasoning"]
+    InsightObj["Insight Object"]
 
-### _“What intelligent processing must happen?”_
+    Retrieval --> Ranking --> ToolUse --> Reasoning --> InsightObj
+```
 
-This is where AI becomes useful.  
-It transforms raw data into validated, structured insight.
+### **Figure 4 — Orchestration & Tool Routing**
 
-**Responsibilities**
+```mermaid
+flowchart TB
+    Router["Router"]
+    Tools["Tools"]
+    Policies["Policies"]
+    Memory["Memory"]
 
-*   RAG (retrieval, ranking, chunking, hybrid search)
-*   Reasoning chains
-*   Evaluators & comparators (CSSWEB scoring, resume scoring, compliance scoring)
-*   Orchestration patterns:
-    *   Tool router
-    *   Function calling
-    *   Memory
-    *   Policies / guardrails
-    *   Deterministic prompting
-*   Domain logic + rule engines
-*   Observability & evaluation (Promptfoo, DeepEval)
-*   Safety frameworks
+    Router --> Tools
+    Router --> Policies
+    Router --> Memory
+```
 
-**Outputs**
+### **Figure 5 — Conversation Feedback Loop**
 
-*   Insights, comparisons, summaries
-*   Decision-ready structured data
-*   Machine-verifiable reasoning artifacts
+```mermaid
+flowchart LR
+    User["User"]
+    Conv["Conversation Layer"]
+    Insight["Insight Layer"]
 
-* * *
+    User --> Conv --> Insight
+    Insight --> Conv --> User
+```
 
-**Layer 3 — CONVERSATION**
-------------------------------
+### **Figure 6 — System Boundary Diagram**
 
-### _“How does the user experience the insight?”_
+```mermaid
+flowchart TB
+    External["External Systems"]
 
-The final layer turns intelligence into experience.
+    subgraph SDLC ["Three-Layer SDLC"]
+        Data["Data Layer"]
+        Insight["Insight Layer"]
+        Conversation["Conversation Layer"]
+    end
 
-**Responsibilities**
+    Outputs["Outputs"]
 
-*   Chat UI / conversational interface
-*   API responses
-*   Executive dashboards (e.g., Unanet P&L)
-*   Reports (PDF/HTML/Email)
-*   Guided workflows, prompts, auto-questions
-*   Voice interfaces or mobile UI
-*   Next-action recommendations
-*   Integration with business systems
+    External --> SDLC --> Outputs
+```
 
-**Outputs**
+---
 
-*   An actionable UX
-*   Explainable insights
-*   Continuous feedback loop with Layer 2
+## Layer 1 — DATA
 
-* * *
+**“What raw material do we have?”**
 
-**Why This Model Works**
----------------------------
+The substrate where all intelligence begins.
 
-1.  **Simple enough for executives**  
-    “Data → Insight → Conversation” fits perfectly in CEO slides.
-2.  **Strong enough for enterprise engineering**  
-    Each layer maps directly to an engineering responsibility.
-3.  **Aligns with industry but uniquely clarifies AI SDLC**  
-    Very few frameworks explicitly merge SDLC + AI orchestration + UX.
-4.  **End-to-end traceability**  
-    Every output in one layer flows into the next.
-5.  **Allows multiple teams to work in parallel**
-    *   Data team
-    *   AI/RAG/orchestrator team
-    *   UX/Interface team
-6.  **Perfect foundation for future CAIO OS**  
-    This is the core of the operating system you’ve been developing.
+### Responsibilities
 
-* * *
+* Raw documents (PDF, CSV, email, drawings, resumes)
+* SQL/NoSQL datasets
+* Normalization, cleaning, canonical formats
+* ETL / ELT pipelines
+* Embeddings, vector stores (Chroma, PGVector, Pinecone)
+* Metadata + tagging
+* Data access controls
+* Grounding datasets (enterprise truth)
 
-**Architecture Diagram (Text Version)**
-------------------------------------------
+### Outputs
+
+* Unified Data Substrate
+* Reliable, versioned, queryable data
+* Ready for retrieval and reasoning
+
+---
+
+## Layer 2 — INSIGHT
+
+**“What intelligent processing must happen?”**
+
+Transforms raw data into validated, structured insight.
+
+### Responsibilities
+
+* RAG (retrieval, ranking, hybrid search)
+* Reasoning chains
+* Evaluators & comparators
+* Tool router + function calling
+* Memory + policy guardrails
+* Deterministic prompting
+* Domain logic & rule engines
+* Observability (Promptfoo, DeepEval)
+
+### Outputs
+
+* Insights, comparisons, summaries
+* Decision-ready structured data
+* Machine-verifiable reasoning artifacts
+
+---
+
+## Layer 3 — CONVERSATION
+
+**“How does the user experience the insight?”**
+
+Turns intelligence into user-facing action.
+
+### Responsibilities
+
+* Chat interface
+* APIs & webhooks
+* Dashboards & executive summaries
+* Reports (PDF/HTML/Email)
+* Multi-step workflows
+* Voice & mobile experiences
+* Next-action recommendations
+
+### Outputs
+
+* Actionable UX
+* Explainable outputs
+* Continuous feedback loop with Layer 2
+
+---
+
+## Why This Model Works
+
+1. Simple enough for executives
+2. Strong enough for engineering teams
+3. Clarifies AI SDLC in a way industry hasn’t
+4. Ensures end-to-end traceability
+5. Enables parallel team execution
+6. Forms core of future **CAIO OS**
+
+---
+
+## Architecture Diagram (ASCII Reference)
 
 ```
 ┌──────────────────────────────────┐
 │          LAYER 3:                │
 │        CONVERSATION              │
-│  (UX, Chat, UI, Reporting)       │
 └──────────────────────────────────┘
                 ▲
-                │ Insight Delivery
                 │
 ┌──────────────────────────────────┐
 │          LAYER 2:                │
 │           INSIGHT                │
-│ (RAG, Reasoning, Tools, Logic)   │
 └──────────────────────────────────┘
                 ▲
-                │ Retrieval / Query
                 │
 ┌──────────────────────────────────┐
 │          LAYER 1:                │
 │             DATA                 │
-│ (Raw inputs, ETL, Embeddings)    │
 └──────────────────────────────────┘
 ```
 
-* * *
+---
 
-**Use Cases This Model Has Already Powered**
------------------------------------------------
+## Use Cases
 
-*   **NYSDOT CSSWEB Downloader & Comparator**  
-    (Data extraction → scoring → executive report)
-*   **Resume Sorter / Talent Finder**  
-    (PDF ingestion → scoring → recruiter UI)
-*   **Unanet P&L Insights Dashboard**  
-    (CSV ingestion → Manager/Dept insights → CEO dashboard)
-*   **RFX Analyzer (Pipeline / In Development)**  
-    (RFP ingestion → compliance matrix → bid/no-bid insights)
-*   **KSE On-Prem Chatbot Assistants**  
-    (Local embeddings → insights → conversation UI)
+* NYSDOT CSSWEB Downloader
+* Resume Sorter / Talent Finder
+* Unanet P&L Insights
+* RFX Analyzer
+* KSE On-Prem Chatbot Assistants
 
-* * *
+---
 
-**Folder Structure Suggestion**
-----------------------------------
+## Folder Structure
 
 ```
 /three-layer-intelligence-stack
@@ -189,30 +238,24 @@ The final layer turns intelligence into experience.
 └── diagrams/
 ```
 
-* * *
+---
 
-**How to Use This Framework**
---------------------------------
+## How to Use
 
-*   Design all AI systems beginning from **Data → Insight → Conversation**
-*   Build separate teams around each layer, not around “LLMs”
-*   Treat the model as an SDLC:
-    *   Plan layer by layer
-    *   Implement layer by layer
-    *   Test layer by layer
-    *   Deliver insight, not output
+* Start every system with **Data → Insight → Conversation**
+* Assign teams by layer (Data / Insight / UX)
+* Treat the model as a complete SDLC
+* Deliver insight, not just model output
 
-* * *
+---
 
-**License**
---------------
+## License
 
-MIT License — open for use, modification, and distribution.
+MIT License
 
-* * *
+---
 
-**Author**
--------------
+## Author
 
-**Iqbal Yusuf**  
+**Iqbal Yusuf**
 NYC / NJ
